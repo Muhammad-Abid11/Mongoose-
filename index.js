@@ -30,3 +30,42 @@ const mySchema = new mongoose.Schema({ // schema create kr k MySchema me uska in
 
 const myCollection = new mongoose.model("MyCollection", mySchema);
 
+// Create Documents and inserting
+
+
+/*
+  //1st Method to insert data
+
+const fieldOne = new myCollection({
+    name: "Sajid",
+    roll: 231,
+    active: true,
+    subject: "Maths",
+    title: "Level-1",
+})
+
+fieldOne.save()
+// .save promise return krta hai.
+
+*/
+
+/* 2nd Method async await */
+
+const insertFunc = async () => {
+    try {   //it use for error handling
+        // upper ki sb chezen try me hai.
+        const fieldOne = new myCollection({
+            name: "Sajid",
+            roll: 231,
+            active: true,
+            subject: "Maths",
+            title: "Level-1",
+        })
+        const result = await fieldOne.save()
+        console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+insertFunc();
